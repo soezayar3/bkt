@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Bo Kyar Thanut</title>
+</head>
+<body>
+
+<div id='status'> </div>
+<div id='gameStatus'> </div>
+
+<div id='play'>
+  <button id="Bo">Bo</button>
+  <button id="Kyar">Kyar</button>
+  <button id="Thanut">Thanut</button>
+</div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script>
+  var sock = io();
+  sock.on('msg', onStatusMessage);
+  sock.on('gameMsg', onGameMessage);
+
+  function hideShow() {
+    var x = document.getElementById('play');
+    var y =document.getElementById('status');
+    if (y != "Game Started!") {
+      x.style.display = "none";
+    } else {
+      x.style.display = "block";
+    }
+  }
+
+  function onStatusMessage(msg) {
+    var div = document.querySelector('#status');
+    var item = document.createElement('p');
+    item.innerHTML = msg;
+    div.appendChild(item);
+    //hideShow();
+  }
+
+    function onGameMessage(gameMsg) {
+    var div = document.querySelector('#gameStatus');
+    var item = document.createElement('p');
+    item.innerHTML = gameMsg;
+    div.appendChild(item);
+  }
+  
+  (function(){
+    ['Bo', 'Kyar', 'Thanut'].forEach(function(figure) {
+      var put = document.getElementById(figure);
+      put.addEventListener('click', function() {
+        sock.emit('turn', figure);
+      });
+    });
+  })();
+
+</script>
+</body>
+</html>
