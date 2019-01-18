@@ -1,0 +1,23 @@
+{
+  "name": "bo_kyar_thanut",
+  "version": "1.0.0",
+  "description": "Real time browser game unsing html,css and js",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/soezayar3/bkt.git"
+  },
+  "author": "soe_zayar",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/soezayar3/bkt/issues"
+  },
+  "homepage": "https://github.com/soezayar3/bkt#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "socket.io": "^2.2.0"
+  }
+}
