@@ -5,10 +5,23 @@
   <title>Bo Kyar Thanut</title>
 </head>
 <body>
-
+  <div><h1>Bo Kyar Thanut</h1></div>
 <div id='status'> </div>
 <div id='gameStatus'> </div>
-
+<div class="menu">
+        <h3>How To Play</h3>
+        <ol>
+          <li>Player 1 Create a game room by entering the room name</li>
+          <li>Player 2 Enter to the room created by Player 1</li>
+        </ol>
+        <h4>Create a new room</h4>
+        <input type="text" name="newRoom" id="newRooom" placeholder="Enter room name" required>
+        <button id="new">Create Room</button>
+        <br><br>
+        <h4>Join an existing room</h4>
+        <input type="text" name="joinRoom" id="joinRoom" placeholder="Enter room name" required>
+        <button id="join">Join Room</button>
+      </div>
 <div id='play'>
   <button id="Bo">Bo</button>
   <button id="Kyar">Kyar</button>
@@ -17,9 +30,9 @@
 
 <script src="/socket.io/socket.io.js"></script>
 <script>
-  var sock = io();
-  sock.on('msg', onStatusMessage);
-  sock.on('gameMsg', onGameMessage);
+  var socket = io();
+  socket.on('msg', onStatusMessage);
+  socket.on('gameMsg', onGameMessage);
 
   function hideShow() {
     var x = document.getElementById('play');
@@ -50,7 +63,7 @@
     ['Bo', 'Kyar', 'Thanut'].forEach(function(figure) {
       var put = document.getElementById(figure);
       put.addEventListener('click', function() {
-        sock.emit('turn', figure);
+        socket.emit('turn', figure);
       });
     });
   })();
