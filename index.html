@@ -3,53 +3,47 @@
 <head>
   <meta charset="utf-8">
   <title>Bo Kyar Thanut</title>
+  <link rel="stylesheet" type="text/css" href="style.css" />
+  <link href="https://fonts.googleapis.com/css?family=Coiny" rel="stylesheet"> 
+  
+  <link href="bootstrap-3.3.7-dist/css/bootstrap.css" rel="stylesheet">
+
+
 </head>
 <body>
-  <div><h1>Bo Kyar Thanut</h1></div>
+  <h1>Bo Kyar Thanut</h1>
 <div id='status'> </div>
-<div id='gameStatus'> </div>
-<div class="menu">
-        <h3>How To Play</h3>
-        <ol>
-          <li>Player 1 Create a game room by entering the room name</li>
-          <li>Player 2 Enter to the room created by Player 1</li>
-        </ol>
-        <h4>Create a new room</h4>
-        <input type="text" name="newRoom" id="newRooom" placeholder="Enter room name" required>
-        <button id="new">Create Room</button>
-        <br><br>
-        <h4>Join an existing room</h4>
-        <input type="text" name="joinRoom" id="joinRoom" placeholder="Enter room name" required>
-        <button id="join">Join Room</button>
-      </div>
-<div id='play'>
-  <button id="Bo">Bo</button>
-  <button id="Kyar">Kyar</button>
-  <button id="Thanut">Thanut</button>
+
+<div id='play' class="container">
+  <div class="col-md-2 col-md-offset-2" style="text-align: center;">
+  <button id="Bo" class="tips"><img src="icons/icons8-police-filled-50.png"></button>
+  <p>Bo</p>
 </div>
+
+<div class="col-md-2 " style="text-align: center;">
+  <button id="Kyar" class="tips"><img src="icons/icons8-tiger-filled-50.png"></button>
+  <p>Kyar</p>
+</div>
+<div class="col-md-2 " style="text-align: center;">
+  <button id="Thanut" class="tips"><img src="icons/icons8-gun-filled-50.png"></button>
+  <p>Thanut</p>
+</div>
+</div>
+<div id='winnerMessage' class="col-md-12"> </div>
+<div id='gameStatus' class="col-md-12"> </div>
 
 <script src="/socket.io/socket.io.js"></script>
 <script>
   var socket = io();
   socket.on('msg', onStatusMessage);
   socket.on('gameMsg', onGameMessage);
-
-  function hideShow() {
-    var x = document.getElementById('play');
-    var y =document.getElementById('status');
-    if (y != "Game Started!") {
-      x.style.display = "none";
-    } else {
-      x.style.display = "block";
-    }
-  }
+  socket.on('winner', winnerMsg);
 
   function onStatusMessage(msg) {
     var div = document.querySelector('#status');
     var item = document.createElement('p');
     item.innerHTML = msg;
     div.appendChild(item);
-    //hideShow();
   }
 
     function onGameMessage(gameMsg) {
@@ -58,6 +52,13 @@
     item.innerHTML = gameMsg;
     div.appendChild(item);
   }
+
+    function winnerMsg(winner) {
+    var div = document.querySelector('#winnerMessage');
+    var item = document.createElement('p');
+    item.innerHTML = winner;
+    div.appendChild(item);
+  }  
   
   (function(){
     ['Bo', 'Kyar', 'Thanut'].forEach(function(figure) {

@@ -1,12 +1,15 @@
 const express = require('express');
+const path = require('path');
 const http = require('http');
  
 const app = express();
 const server = http.createServer(app);
 const io = require('socket.io')(server);
 
-app.get('/', function(rer, res) {
-    res.sendFile(__dirname + '/index.html')
+app.use(express.static('.'));
+
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 let waiting = null;
@@ -49,9 +52,10 @@ function startGame(p1, p2) {
 
   function checkRoundEnd() {
     if (p1Turn !== null && p2Turn !== null) {
+      io.to(roomName).emit('winner', getWinner());
       io.to(roomName).emit('gameMsg', 'Round Ended!');
-      io.to(roomName).emit('gameMsg', getWinner());
       io.to(roomName).emit('gameMsg', 'Player1: ' + p1Turn + ' ,Player2: ' + p2Turn);
+      // io.to(roomName).emit('gameMsg', getWinner());
       io.to(roomName).emit('gameMsg', 'Next round!');
       p1Turn = p2Turn = null;
     }

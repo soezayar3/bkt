@@ -1,0 +1,53 @@
+body {
+  background-image:linear-gradient(-90deg,#808080,#3fada8);
+  font-family: 'Coiny', cursive;
+}
+
+h1 
+{  color: white;
+  text-align: center;
+  font-family: 'Coiny', cursive;
+}
+#play
+{	
+	
+	justify-content: center;
+	margin-top: 30px;
+	margin-left: 198px;
+	
+	margin-right: auto;
+	display:block;
+	align-items: center;
+	text-align: center;
+
+}
+#play button
+{
+	background-color: transparent;
+	border-color: transparent;
+}
+.tips:hover,.tips:focus
+{
+	
+	background-color: white;
+	opacity: 0.3;
+	
+}
+#status
+{
+	text-align: center;
+	margin-top:20px;
+}
+#gameStatus
+{
+	text-align:center;
+	font-weight: bold;
+}
+#winnerMessage
+{
+	text-align:center;
+	font-weight: bold;
+	font-size:18px;
+	color: #d01e56;
+	margin-top: 20px;
+}
