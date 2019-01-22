@@ -3,6 +3,7 @@
 #Real Time Multiplayer game using  javascript, nodejs and  socketio for real  time communication
 
 #How to Play:
+
 Clone the repository
 
 git clone git@github.com:soezayar3/bkt.git
