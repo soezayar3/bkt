@@ -4,15 +4,15 @@
 
 #How to Play:
 
-Clone the repository
+#Clone the repository
 
 git clone git@github.com:soezayar3/bkt.git
 
-Move to the cloned directory
+#Move to the cloned directory
 
 cd bkt
 
-Start the game
+#Start the game
 
 node app.js
 
@@ -20,4 +20,4 @@ node app.js
 
 npm start
 
-Open Browser and go localhost:5000
+#Open Browser and go localhost:5000
