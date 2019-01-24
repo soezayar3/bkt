@@ -46,28 +46,20 @@
   var socket = io();
   socket.on('msg', onStatusMessage);
   socket.on('gameMsg', onGameMessage);
-  socket.on('winner', winnerMsg);
 
   function onStatusMessage(msg) {
     var div = document.querySelector('#status');
     var item = document.createElement('p');
     item.innerHTML = msg;
     div.appendChild(item);
-  }
+  };
 
     function onGameMessage(gameMsg) {
     var div = document.querySelector('#gameStatus');
     var item = document.createElement('p');
     item.innerHTML = gameMsg;
     div.appendChild(item);
-  }
-
-    function winnerMsg(winner) {
-    var div = document.querySelector('#winnerMessage');
-    var item = document.createElement('p');
-    item.innerHTML = winner;
-    div.appendChild(item);
-  }  
+  };
   
   (function(){
     ['Bo', 'Kyar', 'Thanut'].forEach(function(figure) {

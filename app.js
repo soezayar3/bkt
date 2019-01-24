@@ -52,7 +52,7 @@ function startGame(p1, p2) {
 
   function checkRoundEnd() {
     if (p1Turn !== null && p2Turn !== null) {
-      io.to(roomName).emit('winner', getWinner());
+      io.to(roomName).emit('gameMsg', getWinner());
       
       io.to(roomName).emit('gameMsg', 'Player1: ' + p1Turn + ' ,Player2: ' + p2Turn);
       io.to(roomName).emit('gameMsg', 'Next round!');
